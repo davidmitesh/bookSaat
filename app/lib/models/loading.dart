@@ -1,0 +1,1 @@
+enum loadingState { IS_LOADING, IS_LOADED, ERROR_OCCURED }
