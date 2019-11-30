@@ -4,3 +4,6 @@ dataset = {
     "Bibek": {"Romance": 1, "Science": 1, "Thriller": 1, "Action": 1, "Emotional": 1,},
     "Kiran": {"Romance": 1, "Science": 1, "Thriller": 1, "Action": 1, "Emotional": 1,},
 }
+print dataset
+print (dataToSendBack)
+sys.stdout.flush()
