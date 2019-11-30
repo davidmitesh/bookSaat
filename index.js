@@ -13,15 +13,16 @@ let app=express();
 app.use(bodyParser.json());
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
-const spawn = require("child_process").spawn;
 
-const pythonProcess = spawn('python',["./recommendation_Data.py"]);
-
-pythonProcess.stdout.on('data', (data) => {
-    console.log(data);
-});
 app.get('/',(req,res)=>{
-    res.send('Hey,I am called');
+    const spawn = require("child_process").spawn;
+
+    const pythonProcess = spawn('python',["./recommendationSystem/recommendation_Data.py"]);
+
+    pythonProcess.stdout.on('data', (data) => {
+        res.send(data);
+    });
+
 })
 
 //function module that will be calling recommendation --collaborative filtering
