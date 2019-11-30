@@ -102,5 +102,3 @@ def user_recommendations(person):
     recommendataions_list = [recommend_item for score, recommend_item in probability_score]
     return recommendataions_list
 
-
-def main():

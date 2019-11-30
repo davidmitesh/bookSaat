@@ -64,13 +64,14 @@ Books.find({ "category.catName": "Fiction" }, (err, docs) => {
 app.get('/recommended', (req, res) => {
     const spawn = require("child_process").spawn;
 
-    const pythonProcess = spawn('python', ["./recommendationSystem/recommendation_Data.py"]);
+    const pythonProcess = spawn('python', ["./recommendationSystem/recommendation_Data.py ",userData,bookData]);
 
     pythonProcess.stdout.on('data')
 });
 
 app.get('/exchange', (req, res) => {
-    let a = _.includes(req.query.q.toLowerCase(), 'stephen'); 
+    console.log(req.query.q.text);
+    let a = _.includes(req.query.q, 'stephen'); 
     if (a) { 
         res.send(science_data);
     }
