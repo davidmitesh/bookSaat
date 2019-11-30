@@ -19,14 +19,57 @@ app.get('/',(req,res)=>{
 
     const pythonProcess = spawn('python',["./recommendationSystem/recommendation_Data.py"]);
 
-    pythonProcess.stdout.on('data', (data) => {
-        res.send(data);
-    });
-
+    pythonProcess.stdout.on('data')
 })
 
+
 //function module that will be calling recommendation --collaborative filtering
-app.get('/get_recommendation',(req,res)=>{
+app.get('/recommended',(req,res)=>{
+    const spawn = require("child_process").spawn;
+
+    const pythonProcess = spawn('python',["./recommendationSystem/recommendation_Data.py"]);
+
+    pythonProcess.stdout.on('data')
+})
+let c_universe=false;
+let c_mistakes=false;
+let c_mix=false;
+app.get('/search',(req,res)=>{
+   console.log(req.query.q);
+   let a = _.includes(req.query.q,'universe');
+   let b= _.includes(req.query.q,'revolution');
+
+   if (a==true){
+       !c_universe;
+   }
+   if(b==true){
+       !c_mistakes;
+   }
+   if ( c_universe && c_mistakes ){
+       !c_mix
+   }
+
+   if (c_universe){
+       res.send(science_data);
+   }
+   if (c_mistakes){
+       res.send(drama_data);
+   }
+   if(c_mix){
+       res.send(mix_data);
+   }
+
+
+
+
+
+
+
+   console.log(a);
+
+
+
+
 
 })
 
