@@ -78,7 +78,7 @@ def user_recommendations(person):
 
     totals = {}
     simSums = {}
-    rankings_list = []
+    probability_score_list = []
     for other in dataset:
         if other == person:
             continue
@@ -95,11 +95,11 @@ def user_recommendations(person):
                 simSums.setdefault(item, 0)
                 simSums[item] += sim
 
-    rankings = [(total / simSums[item], item) for item, total in totals.items()]
-    rankings.sort()
-    rankings.reverse()
+    probability_score = [(total / simSums[item], item) for item, total in totals.items()]
+    probability_score.sort()
+    probability_score.reverse()
     # returns the recommended items
-    recommendataions_list = [recommend_item for score, recommend_item in rankings]
+    recommendataions_list = [recommend_item for score, recommend_item in probability_score]
     return recommendataions_list
 
 
